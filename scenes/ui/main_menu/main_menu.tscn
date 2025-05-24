@@ -1,19 +1,41 @@
-[gd_scene load_steps=2 format=3 uid="uid://cqrdgn8kh31un"]
+[gd_scene load_steps=3 format=3 uid="uid://cqrdgn8kh31un"]
 
 [ext_resource type="FontFile" uid="uid://d3x0rrx2mxlqb" path="res://assets/fonts/Kaph-Regular.ttf" id="1_1ch07"]
+[ext_resource type="Script" uid="uid://bspkm6lw2u4e8" path="res://scenes/ui/main_menu/main_menu.gd" id="1_e8t4i"]
 
 [node name="MainMenu" type="Node2D"]
+script = ExtResource("1_e8t4i")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
-offset_left = 197.0
-offset_top = 96.0
-offset_right = 1137.0
-offset_bottom = 484.0
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 60
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_offset_x = 5
 theme_override_fonts/normal_font = ExtResource("1_1ch07")
 bbcode_enabled = true
-text = "Business is Bloomin'"
+text = "[rainbow freq=1.0 sat=0.3 val=0.8 speed=0.4][font_size=80][wave amp=50.0 freq=3.0 connected=1]Business is Bloomin'[/wave][/font_size][/rainbow]"
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="PlayButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_1ch07")
+theme_override_font_sizes/font_size = 40
+text = "Play"
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]

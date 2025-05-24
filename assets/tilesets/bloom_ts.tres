@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dhs5gx067btnh"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://dhs5gx067btnh"]
 
 [ext_resource type="Texture2D" uid="uid://brk1pxg1wn7q0" path="res://assets/images/tileset.png" id="1_b1y2e"]
+[ext_resource type="PackedScene" uid="uid://dd3088e2vi3ri" path="res://scenes/entities/plantable_area/plantable_area.tscn" id="2_iw1r8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0sr1o"]
 texture = ExtResource("1_b1y2e")
@@ -125,6 +126,10 @@ texture = ExtResource("1_b1y2e")
 17:3/size_in_atlas = Vector2i(3, 3)
 17:3/0 = 0
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_xwuvf"]
+scenes/1/scene = ExtResource("2_iw1r8")
+
 [resource]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_0sr1o")
+sources/1 = SubResource("TileSetScenesCollectionSource_xwuvf")

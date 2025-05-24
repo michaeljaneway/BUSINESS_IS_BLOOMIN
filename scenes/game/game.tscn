@@ -1,9 +1,48 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmudiyn0wi56p"]
+[gd_scene load_steps=9 format=3 uid="uid://bmudiyn0wi56p"]
 
+[ext_resource type="Shader" uid="uid://cofhkgraov337" path="res://assets/shaders/water.gdshader" id="1_0sr1o"]
 [ext_resource type="PackedScene" uid="uid://dl21ej5x52ks2" path="res://scenes/map/map.tscn" id="1_7h61r"]
 [ext_resource type="PackedScene" uid="uid://d32gooe47xctp" path="res://scenes/entities/player/player.tscn" id="1_sul5r"]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kelw5"]
+noise_type = 0
+frequency = 0.1349
+fractal_type = 2
+fractal_octaves = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_a2pkv"]
+width = 1024
+height = 1024
+seamless = true
+noise = SubResource("FastNoiseLite_kelw5")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lfrn8"]
+frequency = 0.0132
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ph54e"]
+seamless = true
+noise = SubResource("FastNoiseLite_lfrn8")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5i0tg"]
+shader = ExtResource("1_0sr1o")
+shader_parameter/noise = SubResource("NoiseTexture2D_a2pkv")
+shader_parameter/secNoise = SubResource("NoiseTexture2D_ph54e")
+shader_parameter/speed = Vector2(0.005, 0.005)
+shader_parameter/speedSecondNoise = Vector2(-0.05, -0.05)
+shader_parameter/distortionStrength = 0.2
+shader_parameter/toneColor = Color(0.352941, 0.831373, 0.937255, 1)
+shader_parameter/topColor = Color(0.352941, 0.831373, 0.937255, 1)
+shader_parameter/lightStart = 0.358
+shader_parameter/lightEnd = 1.0
+shader_parameter/pixelSize = 250.0
+
 [node name="Game" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_5i0tg")
+offset_right = 1280.0
+offset_bottom = 1280.0
 
 [node name="Map" parent="." instance=ExtResource("1_7h61r")]
 
