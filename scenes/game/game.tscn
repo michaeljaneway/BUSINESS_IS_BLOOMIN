@@ -1,0 +1,68 @@
+[gd_scene load_steps=11 format=3 uid="uid://bhq6trjys1te1"]
+
+[ext_resource type="Script" uid="uid://dxmke5hehg3u8" path="res://scenes/game/game.gd" id="1_lfrn8"]
+[ext_resource type="Texture2D" uid="uid://bp3ha1a4kq6da" path="res://assets/images/Background Yellow.png.png" id="1_sul5r"]
+[ext_resource type="Texture2D" uid="uid://bcm3cgvpg1ebt" path="res://assets/images/Colorful.png" id="2_7h61r"]
+[ext_resource type="Script" uid="uid://bwq4ftktmmosa" path="res://scenes/game/egg.gd" id="2_kelw5"]
+[ext_resource type="Script" uid="uid://ctby4b460nrjv" path="res://scenes/game/animatable_body_2d.gd" id="3_0sr1o"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0sr1o"]
+friction = 0.5
+bounce = 0.4
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7h61r"]
+radius = 7.0
+height = 16.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7h61r"]
+size = Vector2(1280, 130)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kelw5"]
+friction = 0.5
+rough = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kelw5"]
+size = Vector2(127, 114)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_lfrn8")
+
+[node name="Bg" type="Sprite2D" parent="."]
+modulate = Color(0.233925, 0.233925, 0.233925, 1)
+texture_filter = 1
+scale = Vector2(10, 10)
+texture = ExtResource("1_sul5r")
+centered = false
+
+[node name="Egg" type="RigidBody2D" parent="."]
+position = Vector2(655, 272)
+mass = 0.01
+physics_material_override = SubResource("PhysicsMaterial_0sr1o")
+gravity_scale = 1.5
+can_sleep = false
+script = ExtResource("2_kelw5")
+
+[node name="Colorful" type="Sprite2D" parent="Egg"]
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("2_7h61r")
+region_enabled = true
+region_rect = Rect2(0, 496, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Egg"]
+scale = Vector2(4, 4)
+shape = SubResource("CapsuleShape2D_7h61r")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(640, 656)
+shape = SubResource("RectangleShape2D_7h61r")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_kelw5")
+script = ExtResource("3_0sr1o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+position = Vector2(660, 500)
+shape = SubResource("RectangleShape2D_kelw5")
