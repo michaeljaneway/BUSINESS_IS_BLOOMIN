@@ -14,7 +14,7 @@ func _ready() -> void:
 	player.opened_shop.connect(_on_opened_shop)
 
 func _on_opened_shop():
-	if GlobalMoney.money >= 1.50 and not has_won:
+	if GlobalMoney.money >= GlobalMoney.required_amt and not has_won:
 		win_ui.show()
 		has_won = true
 	else:

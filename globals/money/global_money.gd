@@ -16,3 +16,18 @@ func decrease(amount: float):
 
 func reset():
 	money = 1
+
+func display_cash(value: float) -> String:
+	var suffixes = ['', 'K', 'M', 'B', 'T', 'Q', ' Bajillion']
+	var shifts = 0
+	var v = value
+	
+	while v >= 1000:
+		v /= 1000
+		shifts += 1
+	
+	if shifts < suffixes.size():
+		return '%0.2f%s' % [v, suffixes[shifts]]
+	else:
+		return '%0.2f' % [value]
+	

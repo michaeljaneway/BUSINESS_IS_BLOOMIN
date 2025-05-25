@@ -17,7 +17,7 @@ func _ready() -> void:
 	flower_name.text = f_data.name
 	
 	# Set Price
-	flower_price.text = "Buy: [font_size=15][color=skyblue]%0.2f$[/color][/font_size]\nSell: [font_size=15][color=yellow]%0.2f$[/color][/font_size]" % [f_data.price, f_data.sale_val]
+	flower_price.text = "Buy: [font_size=15][color=skyblue]%s$[/color][/font_size]\nSell: [font_size=15][color=yellow]%s$[/color][/font_size]" % [GlobalMoney.display_cash(f_data.price), GlobalMoney.display_cash(f_data.sale_val)]
 	
 	# Change panel color
 	var new_stylebox: StyleBoxFlat = self.get_theme_stylebox("panel").duplicate()
