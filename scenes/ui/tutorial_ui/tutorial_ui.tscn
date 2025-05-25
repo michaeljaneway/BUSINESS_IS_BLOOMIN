@@ -1,3 +1,27 @@
-[gd_scene format=3 uid="uid://ditomaga02cre"]
+[gd_scene load_steps=5 format=3 uid="uid://ditomaga02cre"]
 
-[node name="TutorialUi" type="CanvasLayer"]
+[ext_resource type="Script" uid="uid://n4t3hhm8rnnw" path="res://scenes/ui/tutorial_ui/tutorial_ui.gd" id="1_b8g5u"]
+[ext_resource type="Texture2D" uid="uid://cnkhtri0yj7yp" path="res://assets/images/Boat Shop.png" id="2_csdqp"]
+[ext_resource type="Texture2D" uid="uid://bxay35hv8066r" path="res://assets/images/FarmTilesGreen.png" id="3_p2321"]
+[ext_resource type="Texture2D" uid="uid://cc85lnsf65dxa" path="res://assets/images/Keyboard Letters and Symbols.png" id="4_q8ubi"]
+
+[node name="TutorialUi" type="Node2D"]
+script = ExtResource("1_b8g5u")
+
+[node name="Slide1" type="Node2D" parent="."]
+
+[node name="BoatShop" type="Sprite2D" parent="Slide1"]
+position = Vector2(534, 401)
+texture = ExtResource("2_csdqp")
+
+[node name="Slide2" type="Node2D" parent="."]
+
+[node name="FarmTilesGreen" type="Sprite2D" parent="Slide2"]
+position = Vector2(634, 402)
+texture = ExtResource("3_p2321")
+
+[node name="Slide3" type="Node2D" parent="."]
+
+[node name="KeyboardLettersAndSymbols" type="Sprite2D" parent="Slide3"]
+position = Vector2(923, 372)
+texture = ExtResource("4_q8ubi")

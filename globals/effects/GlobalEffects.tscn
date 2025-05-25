@@ -21,7 +21,7 @@ max_polyphony = 20
 
 [node name="Plant" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_uxi43")
-volume_db = -10.0
+volume_db = -20.0
 max_polyphony = 20
 
 [node name="Harvest" type="AudioStreamPlayer" parent="."]

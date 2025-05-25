@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bc1xvbtnlqh1i"]
+[gd_scene load_steps=5 format=3 uid="uid://bc1xvbtnlqh1i"]
 
 [ext_resource type="FontFile" uid="uid://d3x0rrx2mxlqb" path="res://assets/fonts/Kaph-Regular.ttf" id="1_t7xof"]
 [ext_resource type="Script" uid="uid://da27ifsd57tkk" path="res://scenes/ui/money_ui/money_ui.gd" id="1_xvu2d"]
@@ -7,6 +7,14 @@
 font = ExtResource("1_t7xof")
 font_size = 60
 font_color = Color(1, 1, 0.152941, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="LabelSettings" id="LabelSettings_403d8"]
+font = ExtResource("1_t7xof")
+font_size = 20
+font_color = Color(0.955742, 0.58678, 0.681269, 1)
 shadow_size = 2
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(3, 3)
@@ -24,7 +32,20 @@ grow_horizontal = 0
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 
-[node name="MoneyLabel" type="Label" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="MoneyLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "1$"
 label_settings = SubResource("LabelSettings_xvu2d")
+horizontal_alignment = 2
+
+[node name="OutOfLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "/10000$"
+label_settings = SubResource("LabelSettings_403d8")
+horizontal_alignment = 2

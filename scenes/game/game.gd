@@ -3,7 +3,6 @@ class_name Game
 
 @onready var player: Player = $Player
 
-@onready var shop: Shop = $Shop
 @onready var shop_ui: ShopUi = $UiLayer/ShopUi
 @onready var win_ui: CanvasLayer = $UiLayer/WinUi
 
@@ -14,10 +13,9 @@ func _ready() -> void:
 	GlobalMusic.sea.play()
 	player.opened_shop.connect(_on_opened_shop)
 
-func _process(delta: float) -> void:
-	if GlobalMoney.money > 10000 and not has_won:
+func _on_opened_shop():
+	if GlobalMoney.money >= 1.50 and not has_won:
 		win_ui.show()
 		has_won = true
-
-func _on_opened_shop():
-	shop_ui.show()
+	else:
+		shop_ui.show()

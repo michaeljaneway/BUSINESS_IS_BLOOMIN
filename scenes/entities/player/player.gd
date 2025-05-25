@@ -19,8 +19,8 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact"):
 		# Opening shop
 		if is_shop_openable:
-			opened_shop.emit()
 			sell_flowers()
+			opened_shop.emit()
 		
 		# Planting & Harvesting
 		if active_p_area != null:
@@ -28,7 +28,6 @@ func _process(delta: float) -> void:
 				plant_flower()
 			elif active_p_area.harvestable:
 				active_p_area.harvest()
-
 
 # Handle plantable areas
 func handle_p_areas():

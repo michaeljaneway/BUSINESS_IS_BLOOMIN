@@ -1,11 +1,13 @@
 extends CanvasLayer
 class_name MoneyUi
 
-@onready var money_label: Label = $MarginContainer/MoneyLabel
+@onready var money_label: Label = %MoneyLabel
+@onready var out_of_label: Label = %OutOfLabel
 
 func _ready() -> void:
 	GlobalMoney.money_increased.connect(_on_money_increased)
 	GlobalMoney.money_decreased.connect(_on_money_decreased)
+	out_of_label.text = "/%0.2f$" % GlobalMoney.required_amt
 
 func _process(delta: float) -> void:
 	money_label.text = "%0.2f$" % GlobalMoney.money

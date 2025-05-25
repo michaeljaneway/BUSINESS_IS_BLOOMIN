@@ -1,3 +1,60 @@
-[gd_scene format=3 uid="uid://fc0bgqw0rnde"]
+[gd_scene load_steps=3 format=3 uid="uid://fc0bgqw0rnde"]
+
+[ext_resource type="Script" uid="uid://6xouykeb3h3h" path="res://scenes/ui/win_ui/win_ui.gd" id="1_hns0v"]
+[ext_resource type="FontFile" uid="uid://d3x0rrx2mxlqb" path="res://assets/fonts/Kaph-Regular.ttf" id="1_ribps"]
 
 [node name="WinUi" type="CanvasLayer"]
+script = ExtResource("1_hns0v")
+
+[node name="BgRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.192157, 0.192157, 0.192157, 0.768627)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="WinLabel" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 125)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_offset_x = 5
+theme_override_fonts/normal_font = ExtResource("1_ribps")
+bbcode_enabled = true
+text = "[rainbow freq=1.0 sat=0.3 val=0.8 speed=0.4][font_size=80][wave amp=50.0 freq=3.0 connected=1]YOU WIN![/wave][/font_size][/rainbow]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ThanksLabel" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_offset_x = 5
+theme_override_fonts/normal_font = ExtResource("1_ribps")
+bbcode_enabled = true
+text = "[rainbow freq=1.0 sat=0.3 val=0.8 speed=0.4][font_size=40][wave amp=50.0 freq=3.0 connected=1]Thank you for playing our game![/wave][/font_size][/rainbow]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContinueButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(500, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_ribps")
+theme_override_font_sizes/font_size = 40
+text = "Continue"
+
+[connection signal="pressed" from="VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
