@@ -33,6 +33,7 @@ func _process(delta: float) -> void:
 			elif active_p_area.harvestable:
 				active_p_area.harvest()
 
+
 # Handle plantable areas
 func handle_p_areas():
 	var pp = PhysicsPointQueryParameters2D.new()

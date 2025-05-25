@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://fc0bgqw0rnde"]
+
+[node name="WinUi" type="CanvasLayer"]
