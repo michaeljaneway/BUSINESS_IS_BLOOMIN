@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b836om1jup1b5"]
+
+[ext_resource type="Script" uid="uid://dvomgwdm4vgdt" path="res://globals/music/global_music.gd" id="1_u4pde"]
+[ext_resource type="AudioStream" uid="uid://bd170mg67w4aq" path="res://assets/music/apple_cider.ogg" id="2_s8nq8"]
+
+[node name="GlobalMusic" type="Node"]
+script = ExtResource("1_u4pde")
+
+[node name="AppleCider" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_s8nq8")
+volume_db = -30.0

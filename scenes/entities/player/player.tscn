@@ -1,39 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://d32gooe47xctp"]
+[gd_scene load_steps=10 format=3 uid="uid://d32gooe47xctp"]
 
 [ext_resource type="Script" uid="uid://cjcvfj8iwteh6" path="res://scenes/entities/player/player.gd" id="1_635qg"]
-[ext_resource type="Texture2D" uid="uid://c3wx7ojnlgom1" path="res://assets/images/cat.png" id="2_635qg"]
-
-[sub_resource type="Animation" id="Animation_635qg"]
-resource_name = "Up"
-length = 0.800003
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4, 0.533333, 0.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5]
-}
-
-[sub_resource type="Animation" id="Animation_58kc7"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [6]
-}
+[ext_resource type="Texture2D" uid="uid://ci0jyfha1pemy" path="res://assets/images/player_shadow.png" id="2_58kc7"]
+[ext_resource type="Texture2D" uid="uid://dy1ui1bbqp86o" path="res://assets/images/player_walk.png" id="2_635qg"]
 
 [sub_resource type="Animation" id="Animation_nh4ur"]
 resource_name = "Down"
@@ -50,6 +19,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_58kc7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
 }
 
 [sub_resource type="Animation" id="Animation_bjvvg"]
@@ -69,6 +53,23 @@ tracks/0/keys = {
 "values": [12, 13, 14, 15, 16, 17]
 }
 
+[sub_resource type="Animation" id="Animation_635qg"]
+resource_name = "Up"
+length = 0.800003
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4, 0.533333, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nh4ur"]
 _data = {
 &"Down": SubResource("Animation_nh4ur"),
@@ -82,13 +83,21 @@ radius = 2.0
 height = 10.0
 
 [node name="Player" type="CharacterBody2D"]
+y_sort_enabled = true
 scale = Vector2(2, 2)
 collision_layer = 3
 script = ExtResource("1_635qg")
 
+[node name="PlayerShadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.712031, 0.712031)
+texture = ExtResource("2_58kc7")
+offset = Vector2(0, 2)
+
 [node name="CharSprite" type="Sprite2D" parent="."]
-position = Vector2(0, -12)
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("2_635qg")
+offset = Vector2(0, -13)
 hframes = 6
 vframes = 3
 frame = 6

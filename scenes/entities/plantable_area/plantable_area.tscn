@@ -1,12 +1,66 @@
-[gd_scene load_steps=3 format=3 uid="uid://dd3088e2vi3ri"]
+[gd_scene load_steps=7 format=3 uid="uid://dd3088e2vi3ri"]
 
 [ext_resource type="Script" uid="uid://dckvjp7hxy3r0" path="res://scenes/entities/plantable_area/plantable_area.gd" id="1_xl0cs"]
+[ext_resource type="Texture2D" uid="uid://sbcw1tjnt6gc" path="res://assets/images/objects.png" id="2_ysc0v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xl0cs"]
 size = Vector2(16, 16)
 
+[sub_resource type="Curve" id="Curve_ysc0v"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.664671, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_cib7b"]
+curve = SubResource("Curve_ysc0v")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ysc0v"]
+particle_flag_disable_z = true
+direction = Vector3(0, -50, 0)
+spread = 30.0
+initial_velocity_min = 29.58
+initial_velocity_max = 88.71
+gravity = Vector3(0, 40, 0)
+scale_min = 3.0
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_cib7b")
+color = Color(1, 1, 0.27451, 1)
+hue_variation_min = -0.02
+hue_variation_max = 0.02
+
 [node name="PlantableArea" type="Area2D"]
+y_sort_enabled = true
+collision_layer = 8
+collision_mask = 0
+monitoring = false
 script = ExtResource("1_xl0cs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_xl0cs")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+
+[node name="PlantSprite" type="Sprite2D" parent="."]
+visible = false
+y_sort_enabled = true
+position = Vector2(0, 3)
+texture = ExtResource("2_ysc0v")
+offset = Vector2(0, -4)
+region_enabled = true
+region_rect = Rect2(0, 32, 16, 16)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+visible = false
+emitting = false
+amount = 20
+one_shot = true
+explosiveness = 0.65
+process_material = SubResource("ParticleProcessMaterial_ysc0v")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

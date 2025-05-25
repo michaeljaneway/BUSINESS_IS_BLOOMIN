@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://cimwkbvn25usv"]
+
+[ext_resource type="Script" uid="uid://pcccho4kv1jq" path="res://scenes/entities/shop/shop.gd" id="1_0eht7"]
+[ext_resource type="Texture2D" uid="uid://brk1pxg1wn7q0" path="res://assets/images/tileset.png" id="1_8et3h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8et3h"]
+size = Vector2(58, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0eht7"]
+size = Vector2(36, 10)
+
+[node name="Shop" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_0eht7")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 15.5)
+shape = SubResource("RectangleShape2D_8et3h")
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="ShopSprite" type="Sprite2D" parent="Sprites"]
+position = Vector2(0, -23)
+texture = ExtResource("1_8et3h")
+region_enabled = true
+region_rect = Rect2(274, 48, 44, 46)
+
+[node name="Bush1" type="Sprite2D" parent="Sprites"]
+position = Vector2(-16, -5)
+texture = ExtResource("1_8et3h")
+region_enabled = true
+region_rect = Rect2(240, 80, 16, 16)
+
+[node name="Bush2" type="Sprite2D" parent="Sprites"]
+position = Vector2(16, -3)
+texture = ExtResource("1_8et3h")
+region_enabled = true
+region_rect = Rect2(225, 82, 15, 14)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_0eht7")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

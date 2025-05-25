@@ -16,13 +16,13 @@ uniform vec3 tint = vec3(255, 68, 23);
 // Created by David Gallardo - xjorma/2020
 // License Creative Commons Attribution-NonCommercial-ShareAlike 3.0
 
-//	Simplex 3D Noise 
+//	Simplex 3D Noise
 //	by Ian McEwan, Ashima Arts
 //
 vec4 permute(vec4 x){return mod(((x*34.0)+1.0)*x, 289.0);}
 vec4 taylorInvSqrt(vec4 r){return 1.79284291400159 - 0.85373472095314 * r;}
 
-float snoise(vec3 v){ 
+float snoise(vec3 v){
   const vec2  C = vec2(1.0/6.0, 1.0/3.0) ;
   const vec4  D = vec4(0.0, 0.5, 1.0, 2.0);
 
@@ -36,16 +36,16 @@ float snoise(vec3 v){
   vec3 i1 = min( g.xyz, l.zxy );
   vec3 i2 = max( g.xyz, l.zxy );
 
-  //  x0 = x0 - 0. + 0.0 * C 
+  //  x0 = x0 - 0. + 0.0 * C
   vec3 x1 = x0 - i1 + 1.0 * C.xxx;
   vec3 x2 = x0 - i2 + 2.0 * C.xxx;
   vec3 x3 = x0 - 1. + 3.0 * C.xxx;
 
 // Permutations
-  i = mod(i, 289.0 ); 
-  vec4 p = permute( permute( permute( 
+  i = mod(i, 289.0 );
+  vec4 p = permute( permute( permute(
              i.z + vec4(0.0, i1.z, i2.z, 1.0 ))
-           + i.y + vec4(0.0, i1.y, i2.y, 1.0 )) 
+           + i.y + vec4(0.0, i1.y, i2.y, 1.0 ))
            + i.x + vec4(0.0, i1.x, i2.x, 1.0 ));
 
 // Gradients
@@ -87,7 +87,7 @@ float snoise(vec3 v){
 // Mix final noise value
   vec4 m = max(0.6 - vec4(dot(x0,x0), dot(x1,x1), dot(x2,x2), dot(x3,x3)), 0.0);
   m = m * m;
-  return 42.0 * dot( m*m, vec4( dot(p0,x0), dot(p1,x1), 
+  return 42.0 * dot( m*m, vec4( dot(p0,x0), dot(p1,x1),
                                 dot(p2,x2), dot(p3,x3) ) );
 }
 
@@ -100,7 +100,7 @@ float sat(float v)
 
 float fbm(vec3 p, int octaveNum)
 {
-	float acc = 0.0;	
+	float acc = 0.0;
 	float freq = 1.0;
 	float amp = 0.5;
     vec3 shift = vec3(100);
@@ -133,22 +133,22 @@ void fragment()
   vec2 iResolution =  1.0 / SCREEN_PIXEL_SIZE; // for copy-paste
     vec2 uv = UV;
     uv  = uv * 2.0 - 1.0;
-    
+
 	vec2	p = uv;
     vec2	sp = p;
     sp.x = abs(sp.x);
-    
+
     vec3 col = paperColor;
-    
+
 	col += hash21(p) / 20.;
-    
+
     float i1 = smoothstep(.03, 0., fbm(vec3(sp, TIME * 0.05 + 30.), 7) - 0.2 + length(p) * 0.5);
     float i2 = smoothstep(.03, 0., fbm(vec3(sp, TIME * 0.04 + 16.), 7) + length(p) * 0.5);
     vec3	inkColor2  = tint / 255.;
 
     col = mix(col, inkColor2, i2 * (0.4 + 0.6 * (fbm(vec3(p * 0.75, TIME * 0.04 + 256.), 5))));
     col = mix(col, inkColor1, i1 * (0.4 + 0.6 * (fbm(vec3(p * 0.75, TIME * 0.04 + 2445.), 5))));
-    
+
     col = vignette(col, FRAGCOORD.xy / iResolution.xy, 0.3);
 
     // Output to screen
