@@ -11,6 +11,7 @@ var has_won: bool = false
 
 func _ready() -> void:
 	shop_ui.hide()
+	GlobalMusic.sea.play()
 	player.opened_shop.connect(_on_opened_shop)
 
 func _process(delta: float) -> void:

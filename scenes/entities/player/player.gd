@@ -11,7 +11,6 @@ var active_p_area: PlantableArea = null
 var can_move: bool = true
 
 var is_shop_openable: bool = false
-var is_in_sell_area: bool = false
 
 func _process(delta: float) -> void:
 	handle_p_areas()
@@ -21,9 +20,6 @@ func _process(delta: float) -> void:
 		# Opening shop
 		if is_shop_openable:
 			opened_shop.emit()
-		
-		# Selling
-		if is_in_sell_area:
 			sell_flowers()
 		
 		# Planting & Harvesting
