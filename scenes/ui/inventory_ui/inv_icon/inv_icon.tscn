@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://cwi4kd8wabi08"]
+
+[ext_resource type="Script" uid="uid://h5bgc7u3ppl4" path="res://scenes/ui/inventory_ui/inv_icon/inv_icon.gd" id="1_fqf4y"]
+[ext_resource type="Texture2D" uid="uid://sbcw1tjnt6gc" path="res://assets/images/objects.png" id="2_ph2xp"]
+[ext_resource type="FontFile" uid="uid://d3x0rrx2mxlqb" path="res://assets/fonts/Kaph-Regular.ttf" id="3_hd4cr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hd4cr"]
+atlas = ExtResource("2_ph2xp")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_v17bv"]
+font = ExtResource("3_hd4cr")
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="InvIcon" type="PanelContainer"]
+custom_minimum_size = Vector2(50, 50)
+script = ExtResource("1_fqf4y")
+
+[node name="IconMargin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Icon" type="TextureRect" parent="IconMargin"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_hd4cr")
+
+[node name="LabelMargin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+
+[node name="CountLabel" type="Label" parent="LabelMargin"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+text = "1"
+label_settings = SubResource("LabelSettings_v17bv")
+horizontal_alignment = 2

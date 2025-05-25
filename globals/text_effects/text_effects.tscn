@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://duabnqokjuv64"]
+
+[ext_resource type="Script" uid="uid://b0kdsi6ns5q2i" path="res://globals/text_effects/text_effects.gd" id="1_qfb1e"]
+
+[node name="TextEffects" type="CanvasLayer"]
+script = ExtResource("1_qfb1e")

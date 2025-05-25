@@ -39,6 +39,8 @@ func grow():
 func harvest():
 	harvestable = false
 	gpu_particles_2d.emitting = true
+	GlobalInventory.flowers[plant.inv_index] += 1
+	GlobalEffects.harvest.play()
 	
 	plant_sprite.visible = false
 	plant_growth_level = -1

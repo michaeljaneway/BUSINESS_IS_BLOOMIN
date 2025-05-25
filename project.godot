@@ -16,8 +16,13 @@ config/features=PackedStringArray("4.4", "GL Compatibility")
 
 [autoload]
 
+Preloader="*res://globals/preloader/preloader.gd"
 Plants="*res://globals/plants/Plants.gd"
 GlobalMusic="*res://globals/music/global_music.tscn"
+GlobalMoney="*res://globals/money/global_money.gd"
+GlobalEffects="*res://globals/effects/GlobalEffects.tscn"
+GlobalInventory="*res://globals/inventory/global_inventory.gd"
+TextEffects="*res://globals/text_effects/text_effects.tscn"
 
 [display]
 

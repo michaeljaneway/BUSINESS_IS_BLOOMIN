@@ -1,0 +1,94 @@
+[gd_scene load_steps=9 format=3 uid="uid://dhk8g5mv5isgy"]
+
+[ext_resource type="Script" uid="uid://rbm6o1c1b2js" path="res://scenes/ui/flower_ui/flower_ui.gd" id="1_dtrlx"]
+[ext_resource type="FontFile" uid="uid://d3x0rrx2mxlqb" path="res://assets/fonts/Kaph-Regular.ttf" id="1_vdfed"]
+[ext_resource type="Texture2D" uid="uid://sbcw1tjnt6gc" path="res://assets/images/objects.png" id="2_dtrlx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sqvdq"]
+bg_color = Color(0.938897, 0.384182, 0.516572, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 5
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="Theme" id="Theme_fuk00"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_sqvdq")
+
+[sub_resource type="LabelSettings" id="LabelSettings_8mtcx"]
+font = ExtResource("1_vdfed")
+font_size = 30
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtrlx"]
+atlas = ExtResource("2_dtrlx")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rq2wq"]
+atlas = ExtResource("2_dtrlx")
+region = Rect2(0, 0, 16, 16)
+
+[node name="PanelContainer" type="PanelContainer"]
+custom_minimum_size = Vector2(400, 100)
+size_flags_horizontal = 3
+theme = SubResource("Theme_fuk00")
+script = ExtResource("1_dtrlx")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="FlowerName" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Rose"
+label_settings = SubResource("LabelSettings_8mtcx")
+
+[node name="FlowerPrice" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/normal_font = ExtResource("1_vdfed")
+bbcode_enabled = true
+text = "Buy: [font_size=15][color=skyblue]5$[/color][/font_size]
+Sell: [font_size=15][color=yellow]6$[/color][/font_size]"
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="Flower" type="TextureRect" parent="MarginContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_dtrlx")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="FlowerBag" type="TextureRect" parent="MarginContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_rq2wq")
+expand_mode = 2
+stretch_mode = 4
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

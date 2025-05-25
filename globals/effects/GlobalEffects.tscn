@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvt8swmw2l74b"]
+
+[ext_resource type="Script" uid="uid://vqu4emy3j20u" path="res://globals/effects/global_effects.gd" id="1_24vjt"]
+[ext_resource type="AudioStream" uid="uid://wdwmofq8fjsm" path="res://assets/sounds/Many_Coins_In_Sack_Drop_Soft_Surface_08.wav" id="1_wodkj"]
+[ext_resource type="AudioStream" uid="uid://ba2mcq6kbu7tj" path="res://assets/sounds/Many_Coins_In_Sack_Drop_Soft_Surface_02.wav" id="3_2ttc3"]
+[ext_resource type="AudioStream" uid="uid://c4gga57uphbw2" path="res://assets/sounds/shovel.ogg" id="4_uxi43"]
+[ext_resource type="AudioStream" uid="uid://1mutllfpw1mi" path="res://assets/sounds/slam_02.ogg" id="5_1tk3l"]
+
+[node name="GlobalEffects" type="Node"]
+script = ExtResource("1_24vjt")
+
+[node name="Purchase" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_wodkj")
+volume_db = -10.0
+max_polyphony = 20
+
+[node name="Sell" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_2ttc3")
+volume_db = -10.0
+max_polyphony = 20
+
+[node name="Plant" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_uxi43")
+volume_db = -10.0
+max_polyphony = 20
+
+[node name="Harvest" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_1tk3l")
+volume_db = -10.0
+max_polyphony = 20

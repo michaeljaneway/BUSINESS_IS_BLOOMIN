@@ -9,3 +9,4 @@ script = ExtResource("1_u4pde")
 [node name="AppleCider" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_s8nq8")
 volume_db = -30.0
+autoplay = true
