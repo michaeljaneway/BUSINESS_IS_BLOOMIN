@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=4 uid="uid://bmudiyn0wi56p"]
 
-[ext_resource type="Shader" uid="uid://cofhkgraov337" path="res://assets/shaders/water.gdshader" id="1_0sr1o"]
-[ext_resource type="Script" uid="uid://bvgvfcsdjcrqr" path="res://scenes/game/game.gd" id="1_5i0tg"]
+[ext_resource type="Shader" path="res://assets/shaders/water.gdshader" id="1_0sr1o"]
+[ext_resource type="Script" uid="uid://dxmke5hehg3u8" path="res://scenes/game/game.gd" id="1_5i0tg"]
 [ext_resource type="PackedScene" uid="uid://dl21ej5x52ks2" path="res://scenes/map/map.tscn" id="1_7h61r"]
 [ext_resource type="PackedScene" uid="uid://d32gooe47xctp" path="res://scenes/entities/player/player.tscn" id="1_sul5r"]
 [ext_resource type="PackedScene" uid="uid://bkkp4pm3cdrih" path="res://scenes/ui/shop_ui/shop_ui.tscn" id="3_87uf6"]
