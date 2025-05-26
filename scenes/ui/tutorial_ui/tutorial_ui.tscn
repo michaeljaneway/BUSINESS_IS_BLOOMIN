@@ -1,27 +1,236 @@
-[gd_scene load_steps=5 format=3 uid="uid://ditomaga02cre"]
+[gd_scene load_steps=7 format=3 uid="uid://ditomaga02cre"]
 
 [ext_resource type="Script" uid="uid://n4t3hhm8rnnw" path="res://scenes/ui/tutorial_ui/tutorial_ui.gd" id="1_b8g5u"]
-[ext_resource type="Texture2D" uid="uid://cnkhtri0yj7yp" path="res://assets/images/Boat Shop.png" id="2_csdqp"]
-[ext_resource type="Texture2D" uid="uid://bxay35hv8066r" path="res://assets/images/FarmTilesGreen.png" id="3_p2321"]
-[ext_resource type="Texture2D" uid="uid://cc85lnsf65dxa" path="res://assets/images/Keyboard Letters and Symbols.png" id="4_q8ubi"]
+[ext_resource type="Texture2D" uid="uid://d0xr67wax0wb6" path="res://assets/images/tutorial/background.png" id="2_p2321"]
+[ext_resource type="Texture2D" uid="uid://df2t6g826gmev" path="res://assets/images/tutorial/newspaper_full.png" id="3_p2321"]
+[ext_resource type="Texture2D" uid="uid://b427ebuylw0nr" path="res://assets/images/tutorial/hand.png" id="4_ko7j2"]
+[ext_resource type="Texture2D" uid="uid://1icwp2by1vk4" path="res://assets/images/tutorial/shopkeep.png" id="5_qw2jy"]
+[ext_resource type="FontFile" uid="uid://d3x0rrx2mxlqb" path="res://assets/fonts/Kaph-Regular.ttf" id="6_q8ubi"]
 
 [node name="TutorialUi" type="Node2D"]
 script = ExtResource("1_b8g5u")
 
-[node name="Slide1" type="Node2D" parent="."]
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("2_p2321")
+centered = false
 
-[node name="BoatShop" type="Sprite2D" parent="Slide1"]
-position = Vector2(534, 401)
-texture = ExtResource("2_csdqp")
-
-[node name="Slide2" type="Node2D" parent="."]
-
-[node name="FarmTilesGreen" type="Sprite2D" parent="Slide2"]
-position = Vector2(634, 402)
+[node name="Newspaper" type="Sprite2D" parent="."]
 texture = ExtResource("3_p2321")
+centered = false
 
-[node name="Slide3" type="Node2D" parent="."]
+[node name="Shopkeep" type="Sprite2D" parent="."]
+position = Vector2(304, 740)
+texture = ExtResource("5_qw2jy")
+centered = false
 
-[node name="KeyboardLettersAndSymbols" type="Sprite2D" parent="Slide3"]
-position = Vector2(923, 372)
-texture = ExtResource("4_q8ubi")
+[node name="Hand" type="Sprite2D" parent="."]
+position = Vector2(-5, 789)
+texture = ExtResource("4_ko7j2")
+centered = false
+
+[node name="Text" type="Node2D" parent="."]
+
+[node name="Text1" type="RichTextLabel" parent="Text"]
+visible = false
+offset_left = 1.0
+offset_top = 44.0
+offset_right = 1287.0
+offset_bottom = 229.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_offset_x = 5
+theme_override_fonts/normal_font = ExtResource("6_q8ubi")
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = "I came to a remote island for a job opportunity"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text2" type="RichTextLabel" parent="Text"]
+visible = false
+offset_left = 1.0
+offset_top = 44.0
+offset_right = 1287.0
+offset_bottom = 229.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_offset_x = 5
+theme_override_fonts/normal_font = ExtResource("6_q8ubi")
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = "But what is this??"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text3" type="RichTextLabel" parent="Text"]
+visible = false
+offset_top = 514.0
+offset_right = 1286.0
+offset_bottom = 699.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_offset_x = 5
+theme_override_fonts/normal_font = ExtResource("6_q8ubi")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "Heya bud"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text4" type="RichTextLabel" parent="Text"]
+visible = false
+offset_top = 514.0
+offset_right = 1286.0
+offset_bottom = 699.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_offset_x = 5
+theme_override_fonts/normal_font = ExtResource("6_q8ubi")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "Welcome to [wave amp=50.0 freq=5.0 connected=1]Ilsa Del Diver[/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text5" type="RichTextLabel" parent="Text"]
+visible = false
+offset_top = 533.0
+offset_right = 1286.0
+offset_bottom = 718.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_offset_x = 5
+theme_override_fonts/normal_font = ExtResource("6_q8ubi")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "I hope you brought some
+overalls"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text6" type="RichTextLabel" parent="Text"]
+visible = false
+offset_top = 520.0
+offset_right = 1286.0
+offset_bottom = 718.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_offset_x = 5
+theme_override_fonts/normal_font = ExtResource("6_q8ubi")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "Because you're gonna need to make me [color=gold][shake rate=20.0 level=5 connected=1]1 million dollars[/shake][/color] before i can let you leave"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text10" type="RichTextLabel" parent="Text"]
+visible = false
+offset_top = 514.0
+offset_right = 1286.0
+offset_bottom = 712.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_offset_x = 5
+theme_override_fonts/normal_font = ExtResource("6_q8ubi")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "How're you gonna do that?
+by [rainbow freq=1.0 sat=0.5 val=0.8 speed=0.1]growing flowers[/rainbow] of course!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text7" type="RichTextLabel" parent="Text"]
+visible = false
+offset_top = 514.0
+offset_right = 1286.0
+offset_bottom = 712.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_offset_x = 5
+theme_override_fonts/normal_font = ExtResource("6_q8ubi")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "But dont worry!
+I've got a close friend to help get you started"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text8" type="RichTextLabel" parent="Text"]
+visible = false
+offset_left = -2.0
+offset_top = 569.0
+offset_right = 1284.0
+offset_bottom = 718.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_offset_x = 5
+theme_override_fonts/normal_font = ExtResource("6_q8ubi")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "Meet my friend:
+[color=limegreen]JEORjE WorSHINGsTON[/color]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text9" type="RichTextLabel" parent="Text"]
+visible = false
+offset_left = -4.0
+offset_top = 567.0
+offset_right = 1282.0
+offset_bottom = 720.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_offset_x = 5
+theme_override_fonts/normal_font = ExtResource("6_q8ubi")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "you get [wave amp=50.0 freq=5.0 connected=1]ONE crisp buckaroo[/wave] to get started"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text12" type="RichTextLabel" parent="Text"]
+visible = false
+offset_left = -2.0
+offset_top = 563.0
+offset_right = 1284.0
+offset_bottom = 716.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_offset_x = 5
+theme_override_fonts/normal_font = ExtResource("6_q8ubi")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "Don't go spending it all in one place big guy"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text13" type="RichTextLabel" parent="Text"]
+visible = false
+offset_top = 535.0
+offset_right = 1286.0
+offset_bottom = 717.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_offset_x = 5
+theme_override_fonts/normal_font = ExtResource("6_q8ubi")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "Actually, im the only shop for miles, so you don't got a choice!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text11" type="RichTextLabel" parent="Text"]
+visible = false
+offset_left = 2.0
+offset_top = 563.0
+offset_right = 1288.0
+offset_bottom = 716.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_offset_x = 5
+theme_override_fonts/normal_font = ExtResource("6_q8ubi")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "Now go make me some moola!"
+horizontal_alignment = 1
+vertical_alignment = 1

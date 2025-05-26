@@ -13,6 +13,9 @@ config_version=5
 config/name="MiniCodeForACause"
 run/main_scene="uid://cqrdgn8kh31un"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+boot_splash/bg_color=Color(0.490196, 0.741176, 0.937255, 1)
+boot_splash/image="uid://b6ghg8r6vmrk1"
+config/icon="uid://b6ghg8r6vmrk1"
 
 [autoload]
 
@@ -23,6 +26,7 @@ GlobalMoney="*res://globals/money/global_money.gd"
 GlobalEffects="*res://globals/effects/GlobalEffects.tscn"
 GlobalInventory="*res://globals/inventory/global_inventory.gd"
 TextEffects="*res://globals/text_effects/text_effects.tscn"
+GlobalTutorial="*res://globals/tutorial/global_tutorial.gd"
 
 [display]
 
@@ -87,3 +91,4 @@ interact={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

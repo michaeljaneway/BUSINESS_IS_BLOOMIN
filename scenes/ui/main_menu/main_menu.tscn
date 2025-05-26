@@ -1,23 +1,46 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqrdgn8kh31un"]
+[gd_scene load_steps=6 format=3 uid="uid://cqrdgn8kh31un"]
 
 [ext_resource type="FontFile" uid="uid://d3x0rrx2mxlqb" path="res://assets/fonts/Kaph-Regular.ttf" id="1_1ch07"]
 [ext_resource type="Script" uid="uid://bspkm6lw2u4e8" path="res://scenes/ui/main_menu/main_menu.gd" id="1_e8t4i"]
+[ext_resource type="Texture2D" uid="uid://csqc64p4pehvc" path="res://assets/images/in_game_splash.png" id="2_r70wa"]
+[ext_resource type="Script" uid="uid://dakubyst1fdih" path="res://scenes/entities/bobber/bobber.gd" id="3_52x6y"]
+[ext_resource type="Texture2D" uid="uid://buvfrpd3s3xix" path="res://assets/images/logo.png" id="4_8ouhi"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_e8t4i")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="InGameSplash" type="Sprite2D" parent="."]
+texture = ExtResource("2_r70wa")
+centered = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+[node name="Bobber" type="Node2D" parent="."]
+script = ExtResource("3_52x6y")
+metadata/_custom_type_script = "uid://dakubyst1fdih"
+
+[node name="Logo" type="Sprite2D" parent="Bobber"]
+position = Vector2(684, 205)
+texture = ExtResource("4_8ouhi")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 83.0
+offset_top = 49.0
+offset_right = 1083.0
+offset_bottom = 649.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_top = 400
+theme_override_constants/margin_right = 500
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
 theme_override_constants/separation = 60
 alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/VBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -30,7 +53,7 @@ fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PlayButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(500, 70)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -38,7 +61,7 @@ theme_override_fonts/font = ExtResource("1_1ch07")
 theme_override_font_sizes/font_size = 40
 text = "Play"
 
-[node name="SkipTutorialButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="SkipTutorialButton" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(500, 70)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -46,5 +69,5 @@ theme_override_fonts/font = ExtResource("1_1ch07")
 theme_override_font_sizes/font_size = 40
 text = "Skip Tutorial"
 
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/SkipTutorialButton" to="." method="_on_skip_tutorial_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/SkipTutorialButton" to="." method="_on_skip_tutorial_button_pressed"]

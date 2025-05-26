@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2okl5nu55di2"]
+
+[ext_resource type="Script" uid="uid://dakubyst1fdih" path="res://scenes/entities/bobber/bobber.gd" id="1_0kbqc"]
+
+[node name="Bobber" type="Node2D"]
+top_level = true
+z_index = 2
+z_as_relative = false
+script = ExtResource("1_0kbqc")

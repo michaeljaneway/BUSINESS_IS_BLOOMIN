@@ -1,17 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://b836om1jup1b5"]
+[gd_scene load_steps=6 format=3 uid="uid://b836om1jup1b5"]
 
 [ext_resource type="Script" uid="uid://dvomgwdm4vgdt" path="res://globals/music/global_music.gd" id="1_u4pde"]
 [ext_resource type="AudioStream" uid="uid://bd170mg67w4aq" path="res://assets/music/apple_cider.ogg" id="2_s8nq8"]
 [ext_resource type="AudioStream" uid="uid://5uyjcx62ikja" path="res://assets/music/Ambiance_Sea_Loop_Stereo.wav" id="3_757op"]
+[ext_resource type="AudioStream" uid="uid://bi154i2xe14b2" path="res://assets/music/Island Meet and Greet.mp3" id="3_vujnt"]
+[ext_resource type="AudioStream" uid="uid://cnnwqcod5hxhj" path="res://assets/music/Monkeys Spinning Monkeys.mp3" id="4_vujnt"]
 
 [node name="GlobalMusic" type="Node"]
 script = ExtResource("1_u4pde")
 
 [node name="AppleCider" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_s8nq8")
-volume_db = -30.0
+volume_db = -20.0
 autoplay = true
+
+[node name="Island" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_vujnt")
+volume_db = -25.0
+
+[node name="Monkeys" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_vujnt")
+volume_db = -20.0
 
 [node name="Sea" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_757op")
-volume_db = -30.0
+volume_db = -20.0

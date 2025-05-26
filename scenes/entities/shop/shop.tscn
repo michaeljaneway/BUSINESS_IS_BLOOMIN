@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cimwkbvn25usv"]
+[gd_scene load_steps=7 format=3 uid="uid://cimwkbvn25usv"]
 
 [ext_resource type="Script" uid="uid://pcccho4kv1jq" path="res://scenes/entities/shop/shop.gd" id="1_0eht7"]
 [ext_resource type="Texture2D" uid="uid://bl3ndtxno5l4u" path="res://assets/images/shop_boat.png" id="2_0eht7"]
+[ext_resource type="Script" uid="uid://dakubyst1fdih" path="res://scenes/entities/bobber/bobber.gd" id="3_vvw3o"]
+[ext_resource type="FontFile" uid="uid://d3x0rrx2mxlqb" path="res://assets/fonts/Kaph-Regular.ttf" id="4_w6qog"]
+[ext_resource type="Texture2D" uid="uid://cc85lnsf65dxa" path="res://assets/images/Keyboard Letters and Symbols.png" id="5_grfq0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8et3h"]
 size = Vector2(103, 77)
@@ -25,6 +28,99 @@ shape = SubResource("RectangleShape2D_8et3h")
 position = Vector2(0, -33)
 texture = ExtResource("2_0eht7")
 region_rect = Rect2(274, 48, 44, 46)
+
+[node name="EnterStoreTutorial" type="Node2D" parent="."]
+visible = false
+z_index = 2
+z_as_relative = false
+position = Vector2(1, -38)
+script = ExtResource("3_vvw3o")
+metadata/_custom_type_script = "uid://dakubyst1fdih"
+
+[node name="Text1" type="RichTextLabel" parent="EnterStoreTutorial"]
+offset_left = -54.0
+offset_top = -75.0
+offset_right = 53.0
+offset_bottom = -55.0
+mouse_filter = 1
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_fonts/normal_font = ExtResource("4_w6qog")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "Press"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text2" type="RichTextLabel" parent="EnterStoreTutorial"]
+offset_left = -61.0
+offset_top = -43.0
+offset_right = 62.0
+offset_bottom = -23.0
+mouse_filter = 1
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_fonts/normal_font = ExtResource("4_w6qog")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "To Enter STore"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="E" type="Sprite2D" parent="EnterStoreTutorial"]
+position = Vector2(-1, -49)
+texture = ExtResource("5_grfq0")
+hframes = 8
+vframes = 14
+frame = 20
+
+[node name="SellItemsTutorial" type="Node2D" parent="."]
+visible = false
+z_index = 2
+position = Vector2(1, -38)
+script = ExtResource("3_vvw3o")
+metadata/_custom_type_script = "uid://dakubyst1fdih"
+
+[node name="Text1" type="RichTextLabel" parent="SellItemsTutorial"]
+offset_left = -54.0
+offset_top = -74.0
+offset_right = 53.0
+offset_bottom = -54.0
+mouse_filter = 1
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_fonts/normal_font = ExtResource("4_w6qog")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "Enter with"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text2" type="RichTextLabel" parent="SellItemsTutorial"]
+offset_left = -66.0
+offset_top = -41.0
+offset_right = 76.0
+offset_bottom = -21.0
+mouse_filter = 1
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_fonts/normal_font = ExtResource("4_w6qog")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "To Sell All Items"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="E" type="Sprite2D" parent="SellItemsTutorial"]
+position = Vector2(-1, -48)
+texture = ExtResource("5_grfq0")
+hframes = 8
+vframes = 14
+frame = 20
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

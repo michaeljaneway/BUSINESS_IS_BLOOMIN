@@ -54,6 +54,7 @@ func _on_gui_input(event: InputEvent) -> void:
 			GlobalEffects.purchase.play()
 			GlobalMoney.decrease(f_data.price)
 			GlobalInventory.sacks[f_data.inv_index] += 1
+			GlobalTutorial.has_bought_items = true
 
 
 # Mouse hovering

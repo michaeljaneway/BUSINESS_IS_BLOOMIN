@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bkkp4pm3cdrih"]
+[gd_scene load_steps=8 format=3 uid="uid://bkkp4pm3cdrih"]
 
 [ext_resource type="Script" uid="uid://ci3tqjtxdfkd4" path="res://scenes/ui/shop_ui/shop_ui.gd" id="1_yu3hy"]
 [ext_resource type="FontFile" uid="uid://d3x0rrx2mxlqb" path="res://assets/fonts/Kaph-Regular.ttf" id="2_t3inj"]
+[ext_resource type="Script" uid="uid://dakubyst1fdih" path="res://scenes/entities/bobber/bobber.gd" id="3_8mtcx"]
+[ext_resource type="Texture2D" uid="uid://dqg4yn13vskpv" path="res://assets/images/cursor-pointer-15.png" id="4_sqvdq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_82bjl"]
 font = ExtResource("2_t3inj")
@@ -48,11 +50,24 @@ theme_override_constants/separation = 30
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 50
 
 [node name="ShopLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "SHOP"
 label_settings = SubResource("LabelSettings_82bjl")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_t3inj")
+theme_override_font_sizes/font_size = 40
+text = "EXIT"
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -84,3 +99,47 @@ size_flags_vertical = 3
 theme_override_constants/h_separation = 50
 theme_override_constants/v_separation = 20
 columns = 2
+
+[node name="BuyItemsTutorial" type="Node2D" parent="."]
+position = Vector2(317, 563)
+scale = Vector2(3, 3)
+script = ExtResource("3_8mtcx")
+metadata/_custom_type_script = "uid://dakubyst1fdih"
+
+[node name="Cursor" type="Sprite2D" parent="BuyItemsTutorial"]
+position = Vector2(-3.00002, -84)
+texture = ExtResource("4_sqvdq")
+
+[node name="Text1" type="RichTextLabel" parent="BuyItemsTutorial"]
+offset_left = -54.0
+offset_top = -74.0
+offset_right = 53.0
+offset_bottom = -54.0
+mouse_filter = 1
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_fonts/normal_font = ExtResource("2_t3inj")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "Buy items"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text2" type="RichTextLabel" parent="BuyItemsTutorial"]
+offset_left = -66.3334
+offset_top = -59.0
+offset_right = 75.6666
+offset_bottom = -39.0
+mouse_filter = 1
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_fonts/normal_font = ExtResource("2_t3inj")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "With The Cursor"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

@@ -5,6 +5,7 @@ signal opened_shop
 
 @onready var animation_player: AnimationPlayer = $CharSprite/AnimationPlayer
 @onready var char_sprite: Sprite2D = $CharSprite
+@onready var movement_tutorial: Node2D = $MovementTutorial
 
 var active_p_area: PlantableArea = null
 
@@ -20,6 +21,7 @@ func _process(delta: float) -> void:
 		# Opening shop
 		if is_shop_openable:
 			sell_flowers()
+			GlobalTutorial.has_entered_store = true
 			opened_shop.emit()
 		
 		# Planting & Harvesting
@@ -27,6 +29,7 @@ func _process(delta: float) -> void:
 			if active_p_area.plant == null:
 				plant_flower()
 			elif active_p_area.harvestable:
+				GlobalTutorial.has_harvested_flower = true
 				active_p_area.harvest()
 
 # Handle plantable areas
@@ -61,6 +64,7 @@ func plant_flower():
 		GlobalEffects.plant.play()
 		GlobalInventory.sacks[plant_type.inv_index] -= 1
 		active_p_area.plant_flower(plant_type)
+		GlobalTutorial.has_planted_flower = true
 		break
 
 # Sell all of the flowers that we have
@@ -70,9 +74,11 @@ func sell_flowers():
 			continue
 		
 		GlobalEffects.sell.play()
-		GlobalInventory.flowers[plant_type.inv_index] -= 1
-		GlobalMoney.increase(plant_type.sale_val)
-		break
+		GlobalMoney.increase(plant_type.sale_val * GlobalInventory.flowers[plant_type.inv_index])
+		GlobalInventory.flowers[plant_type.inv_index] = 0
+		GlobalTutorial.has_sold_flower = true
+		
+		await get_tree().create_timer(0.1).timeout
 
 # Handle physics
 func _physics_process(delta):
@@ -82,6 +88,11 @@ func _physics_process(delta):
 	# Move
 	var direction = Vector2(Input.get_axis('ui_left', 'ui_right'), Input.get_axis('ui_up', 'ui_down')).normalized()
 	var speed = 150
+	
+	if direction.length() > 0:
+		GlobalTutorial.has_moved = true
+		movement_tutorial.visible = false
+	
 	if Input.is_action_pressed("run"):
 		speed += 100
 	direction *= delta * speed

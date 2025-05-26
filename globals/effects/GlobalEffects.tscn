@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvt8swmw2l74b"]
+[gd_scene load_steps=9 format=3 uid="uid://bvt8swmw2l74b"]
 
 [ext_resource type="Script" uid="uid://vqu4emy3j20u" path="res://globals/effects/global_effects.gd" id="1_24vjt"]
 [ext_resource type="AudioStream" uid="uid://wdwmofq8fjsm" path="res://assets/sounds/Many_Coins_In_Sack_Drop_Soft_Surface_08.wav" id="1_wodkj"]
 [ext_resource type="AudioStream" uid="uid://ba2mcq6kbu7tj" path="res://assets/sounds/Many_Coins_In_Sack_Drop_Soft_Surface_02.wav" id="3_2ttc3"]
 [ext_resource type="AudioStream" uid="uid://c4gga57uphbw2" path="res://assets/sounds/shovel.ogg" id="4_uxi43"]
 [ext_resource type="AudioStream" uid="uid://b5bq5ysmm8bvr" path="res://assets/sounds/plop_02.ogg" id="5_1tk3l"]
+[ext_resource type="AudioStream" uid="uid://doisl78g74axn" path="res://assets/sounds/foghorn.mp3" id="6_6dnk6"]
+[ext_resource type="AudioStream" uid="uid://ddpe4er0skd6k" path="res://assets/sounds/splash.mp3" id="7_grh2q"]
+[ext_resource type="AudioStream" uid="uid://dg57885saij5e" path="res://assets/sounds/fanfare.ogg" id="8_0detu"]
 
 [node name="GlobalEffects" type="Node"]
 script = ExtResource("1_24vjt")
@@ -26,5 +29,20 @@ max_polyphony = 20
 
 [node name="Harvest" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_1tk3l")
+volume_db = -15.0
+max_polyphony = 20
+
+[node name="Foghorn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_6dnk6")
+volume_db = -15.0
+max_polyphony = 20
+
+[node name="Splash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_grh2q")
+volume_db = -15.0
+max_polyphony = 20
+
+[node name="Fanfare" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_0detu")
 volume_db = -15.0
 max_polyphony = 20

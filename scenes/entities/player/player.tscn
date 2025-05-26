@@ -1,9 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://d32gooe47xctp"]
+[gd_scene load_steps=15 format=3 uid="uid://d32gooe47xctp"]
 
 [ext_resource type="Script" uid="uid://cjcvfj8iwteh6" path="res://scenes/entities/player/player.gd" id="1_635qg"]
 [ext_resource type="Texture2D" uid="uid://ci0jyfha1pemy" path="res://assets/images/player_shadow.png" id="2_58kc7"]
 [ext_resource type="Texture2D" uid="uid://dy1ui1bbqp86o" path="res://assets/images/player_walk.png" id="2_635qg"]
+[ext_resource type="Script" uid="uid://dakubyst1fdih" path="res://scenes/entities/bobber/bobber.gd" id="2_bj7e2"]
 [ext_resource type="AudioStream" uid="uid://c0dadosoly7ao" path="res://assets/sounds/Footsteps_Walk_Grass_Mono_01.wav" id="2_nh4ur"]
+[ext_resource type="FontFile" uid="uid://d3x0rrx2mxlqb" path="res://assets/fonts/Kaph-Regular.ttf" id="3_8akj5"]
+[ext_resource type="Texture2D" uid="uid://cc85lnsf65dxa" path="res://assets/images/Keyboard Letters and Symbols.png" id="4_nh4ur"]
+[ext_resource type="Texture2D" uid="uid://2wiyju7auy5t" path="res://assets/images/Keyboard Extras.png" id="5_1murt"]
 
 [sub_resource type="Animation" id="Animation_nh4ur"]
 resource_name = "Down"
@@ -139,6 +143,101 @@ y_sort_enabled = true
 scale = Vector2(2, 2)
 collision_layer = 3
 script = ExtResource("1_635qg")
+
+[node name="MovementTutorial" type="Node2D" parent="."]
+position = Vector2(0, -42)
+script = ExtResource("2_bj7e2")
+metadata/_custom_type_script = "uid://dakubyst1fdih"
+
+[node name="W" type="Sprite2D" parent="MovementTutorial"]
+position = Vector2(0.5, -44.5)
+texture = ExtResource("4_nh4ur")
+hframes = 8
+vframes = 14
+frame = 38
+
+[node name="A" type="Sprite2D" parent="MovementTutorial"]
+position = Vector2(-15.5, -31.5)
+texture = ExtResource("4_nh4ur")
+hframes = 8
+vframes = 14
+frame = 16
+
+[node name="S" type="Sprite2D" parent="MovementTutorial"]
+position = Vector2(0.5, -31.5)
+texture = ExtResource("4_nh4ur")
+hframes = 8
+vframes = 14
+frame = 34
+
+[node name="D" type="Sprite2D" parent="MovementTutorial"]
+position = Vector2(16.5, -31)
+texture = ExtResource("4_nh4ur")
+hframes = 8
+vframes = 14
+frame = 19
+
+[node name="Text1" type="RichTextLabel" parent="MovementTutorial"]
+offset_left = -52.5
+offset_top = -69.0
+offset_right = 54.5
+offset_bottom = -49.0
+mouse_filter = 1
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_fonts/normal_font = ExtResource("3_8akj5")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "To Move:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text2" type="RichTextLabel" parent="MovementTutorial"]
+offset_left = -36.0
+offset_top = -23.0
+offset_right = 71.0
+offset_bottom = -3.0
+mouse_filter = 1
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_fonts/normal_font = ExtResource("3_8akj5")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = " to run"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Shift" type="Sprite2D" parent="MovementTutorial"]
+position = Vector2(-24.5, -13)
+texture = ExtResource("5_1murt")
+hframes = 4
+vframes = 8
+frame = 4
+
+[node name="Text3" type="RichTextLabel" parent="MovementTutorial"]
+offset_left = -44.0
+offset_top = -5.0
+offset_right = 63.0
+offset_bottom = 15.0
+mouse_filter = 1
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_fonts/normal_font = ExtResource("3_8akj5")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = " to interact"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="E" type="Sprite2D" parent="MovementTutorial"]
+position = Vector2(-41.5, 4)
+texture = ExtResource("4_nh4ur")
+hframes = 8
+vframes = 14
+frame = 20
 
 [node name="Footstep" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_nh4ur")
